@@ -54,8 +54,8 @@ def add(request: Request, todo_id: int, db: Session=Depends(get_db)):
   
   return RedirectResponse(url=app.url_path_for('home'), status_code=status.HTTP_302_FOUND)
 
-@app.get('/update/{todo_id}')
-def add(request: Request, todo_id: int, db: Session=Depends(get_db)):
+@app.get('/remove/{todo_id}')
+def remove(request: Request, todo_id: int, db: Session=Depends(get_db)):
   todo = db.query(models.Todo).filter(models.Todo.id == todo_id).first()
   db.delete(todo)
   db.commit()
